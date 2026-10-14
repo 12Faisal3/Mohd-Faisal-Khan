@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+import { experience, skills } from "../data/experience";
+---
+
+<Base title={`Experience — ${profile.name}`}>
+  <div class="page-intro">
+    <h1>Experience</h1>
+    <p>Professional experience and technical skills of Mohd Faisal Khan.</p>
+  </div>
+
+  <section class="section">
+    <h2>Professional experience</h2>
+
+    {experience.map((item) => (
+      <div class="item">
+        <h3>{item.role} — {item.organization}, {item.location}</h3>
+
+        <div class="meta">{item.period}</div>
+
+        <ul>
+          {item.responsibilities.map((responsibility) => (
+            <li>{responsibility}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section class="section">
+    <h2>Technical skills</h2>
+
+    <div class="item">
+      <h3>Hardware</h3>
+      <p>{skills.hardware}</p>
+    </div>
+
+    <div class="item">
+      <h3>EDA</h3>
+      <p>{skills.eda}</p>
+    </div>
+
+    <div class="item">
+      <h3>Physical design</h3>
+      <p>{skills.physicalDesign}</p>
+    </div>
+
+    <div class="item">
+      <h3>FPGA</h3>
+      <p>{skills.fpga}</p>
+    </div>
+
+    <div class="item">
+      <h3>Programming</h3>
+      <p>{skills.programming}</p>
+    </div>
+  </section>
+</Base>

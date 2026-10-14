@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+import { education, awards } from "../data/education";
+---
+
+<Base title={`About — ${profile.name}`}>
+  <div class="about-layout">
+    <div class="about-content">
+    <div class="page-intro">
+    <h1>Biography</h1>
+
+    <p>
+      I am a PhD Scholar in the Department of Electrical Engineering at the
+      Indian Institute of Technology Indore, working at the intersection of{' '}
+      <strong>VLSI, AI hardware, and algorithm–hardware co-design</strong>{' '}for edge intelligence.
+    </p>
+
+    <p>
+      My research focuses on designing{' '}
+      <strong>efficient and low-power hardware architectures for AI acceleration</strong>,
+      with interests spanning FPGA and ASIC implementations, mixed-precision
+      computing, reconfigurable architectures, and edge AI systems.
+    </p>
+
+    <p>
+      I am particularly interested in translating computationally intensive
+      AI algorithms into{' '}<strong>practical, scalable, and energy-efficient
+      hardware solutions</strong> for real-world edge applications.
+    </p>
+  </div>
+
+  </div>
+
+  </div>
+
+  <section class="section">
+    <h2>Education</h2>
+
+    {education.map((item) => (
+      <div class="item">
+        <h3>{item.degree} — {item.field}</h3>
+        <div class="meta">
+          {item.institution} · {item.period}
+        </div>
+
+        {item.thesis && <p>Thesis: {item.thesis}</p>}
+        {item.cgpa && <p>CGPA: {item.cgpa}</p>}
+      </div>
+    ))}
+  </section>
+
+  <section class="section">
+    <h2>Awards and Honors</h2>
+
+    {awards.map((award) => (
+      <div class="item">
+        <h3>{award.title}</h3>
+        <div class="meta">
+          {award.organization} · {award.period}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="section">
+    <h2>Contact</h2>
+
+    <p>
+      <a class="link" href={`mailto:${profile.email}`}>
+        {profile.email}
+      </a>
+    </p>
+
+    <p>
+      <a class="link" href={`tel:${profile.phone.replace(/\D/g, "")}`}>
+        {profile.phone}
+      </a>
+    </p>
+  </section>
+</Base>

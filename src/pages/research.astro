@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+import { research } from "../data/research";
+---
+
+<Base title={`Research — ${profile.name}`}>
+  <div class="page-intro">
+    <h1>Research</h1>
+    <p>{research.intro}</p>
+  </div>
+
+  <section class="section">
+    <h2>Research Focus</h2>
+
+    <ul>
+      {research.focus.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>PhD Thesis</h2>
+    <div class="item">
+      <h3>{research.thesis.title}</h3>
+      <p>{research.thesis.description}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Technical Direction</h2>
+    <p>{research.technicalDirection}</p>
+  </section>
+</Base>

@@ -1,0 +1,65 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/profile";
+import { publications } from "../data/publications";
+import { patents } from "../data/patents";
+---
+
+<Base title={`Publications — ${profile.name}`}>
+  <div class="page-intro">
+    <h1>Publications</h1>
+    <p>Publications and patents by Mohd Faisal Khan.</p>
+  </div>
+
+  <section class="section">
+    <h2>Selected publications</h2>
+
+    {publications.map((publication, index) => (
+      <div class="item">
+        <div class="meta">[{index + 1}]</div>
+
+        <h3>{publication.title}</h3>
+
+        <p>{publication.authors}</p>
+
+        <p class="meta">{publication.venue}</p>
+
+        {publication.link && (
+          <a
+            class="link"
+            href={publication.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            → {publication.link.includes("arxiv") ? "arXiv" : "IEEE Xplore"}
+          </a>
+        )}
+      </div>
+    ))}
+  </section>
+
+  <section class="section">
+    <h2>Patents</h2>
+
+    {patents.map((patent, index) => (
+      <div class="item">
+        <div class="meta">[{index + 1}]</div>
+
+        <h3>{patent.title}</h3>
+
+        <p>{patent.details}</p>
+
+        {patent.link && (
+          <a
+            class="link"
+            href={patent.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            → View patent
+          </a>
+        )}
+      </div>
+    ))}
+  </section>
+</Base>
